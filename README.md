@@ -1,6 +1,6 @@
 #RxBus_
 
-采用RxAndroid、APT的思路,根据EventBus的源码仿造一个RxBus。
+采用RxAndroid、APT,根据EventBus的源码思路仿造一个RxBus,用法上跟EventBus相似。
 
 
 ###注册-注销-接受事件

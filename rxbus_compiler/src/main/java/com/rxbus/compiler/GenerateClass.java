@@ -38,16 +38,15 @@ public class GenerateClass {
      * 生成一个java文件
      */
     public JavaFile generateJavaFile() {
-        // 构建inject函数
+        // 构建inject函数 public inject(final )
         MethodSpec.Builder methodBuilder = MethodSpec.methodBuilder("inject")// 函数名称
                 .addModifiers(Modifier.PUBLIC)// 函数声明类型
                 .addAnnotation(Override.class)// 添加注释
                 .addParameter(TypeName.get(typeElement.asType()), "host", Modifier.FINAL);// 函数参数名
-//                .addParameter(TypeName.OBJECT, "source");
 
         // 在inject函数中插入RxBus.register函数
         methodBuilder.addStatement("$T.getInstance().register(host)", TypeUtil.RXBUS);
-        // generate whole class
+        // 生成一个xxx$$RxBus类
         TypeSpec finderClass = TypeSpec.classBuilder(typeElement.getSimpleName() + "$$RxBus")
                 .addModifiers(Modifier.PUBLIC)
                 .addSuperinterface(ParameterizedTypeName.get(TypeUtil.IRXBUS, TypeName.get(typeElement.asType())))

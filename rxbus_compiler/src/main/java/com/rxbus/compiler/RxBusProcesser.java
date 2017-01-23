@@ -72,6 +72,7 @@ public class RxBusProcesser extends AbstractProcessor {
         return true;
     }
 
+
     private void processBindRxBus(RoundEnvironment roundEnvironment) {
         for (Element element : roundEnvironment.getElementsAnnotatedWith(BindRxBus.class)) {
             if (element.getKind() == ElementKind.METHOD) {
